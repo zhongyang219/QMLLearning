@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/QtGuiApplication1">
+        <file>Resources/ui.qml</file>
+        <file>Resources/MyButton.qml</file>
+    </qresource>
+</RCC>
