@@ -79,6 +79,19 @@ Rectangle {
         }
     }
 
+    MyButton
+    {
+        id: btn2
+        anchors.left: edit1.right
+        anchors.leftMargin: 10
+        anchors.top: edit1.top
+        btnText: "按钮2"
+        onClicked:
+        {
+            listExample.round = !listExample.round
+        }
+    }
+
     Text
     {
         id: label
@@ -110,5 +123,78 @@ Rectangle {
         function increment() {
             spacePresses = spacePresses + 1
         }
+    }
+
+
+    Column
+    {
+        id: columExample
+        anchors.left: root.left
+        anchors.top: label.bottom
+        anchors.margins: 10
+        spacing: 2
+        Repeater {
+            model: ["Enterprise", "Colombia", "Challenger", "Discovery", "Endeavour"]
+            Rectangle {
+                width: 100
+                height: 20
+                radius: 3
+                color: "lightBlue"
+                Text {
+                    anchors.centerIn: parent
+                    text: index +": "+modelData
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: listExample
+        width: 100
+        height: 200
+        color: "white"
+        anchors.left: columExample.right
+        anchors.top: label.bottom
+        anchors.margins: 10
+
+        property bool round: false
+
+        ListView {
+            anchors.fill: parent
+            anchors.margins: 20
+            clip: true
+            model: 100
+            delegate: parent.round ? numberDelegate1 : numberDelegate
+            spacing: 5
+        }
+        Component {
+            id: numberDelegate
+            Rectangle {
+                width: 60
+                height: 20
+                color: "lightGreen"
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 10
+                    text: index
+                }
+            }
+        }
+
+        Component {
+            id: numberDelegate1
+            Rectangle {
+                width: 40
+                height: 24
+                radius: 6
+                color: "#FDB4AD"
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 10
+                    text: index
+                }
+            }
+        }
+
     }
 }
