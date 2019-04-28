@@ -85,13 +85,25 @@ Rectangle {
         anchors.left: edit1.right
         anchors.leftMargin: 10
         anchors.top: edit1.top
-        btnText: "按钮2"
+        btnText: "切换样式"
         onClicked:
         {
-            listExample.round = !listExample.round
+            listExample.bRound = !listExample.bRound
         }
     }
 
+    MyButton
+    {
+        id: btn3
+        anchors.left: btn2.right
+        anchors.leftMargin: 10
+        anchors.top: edit1.top
+        btnText: "切换视图"
+        onClicked:
+        {
+            listExample.bList = !listExample.bList
+        }
+    }
     Text
     {
         id: label
@@ -150,27 +162,41 @@ Rectangle {
 
     Rectangle {
         id: listExample
-        width: 100
+        width: 300
         height: 200
         color: "white"
         anchors.left: columExample.right
         anchors.top: label.bottom
         anchors.margins: 10
 
-        property bool round: false
+        property bool bRound: false     //是否使用圆角矩形
+        property bool bList: true       //是否使用列表视图
 
         ListView {
             anchors.fill: parent
             anchors.margins: 20
             clip: true
             model: 100
-            delegate: parent.round ? numberDelegate1 : numberDelegate
+            delegate: parent.bRound ? numberDelegate1 : numberDelegate
             spacing: 5
+            visible: parent.bList
         }
+
+        GridView {
+            anchors.fill: parent
+            anchors.margins: 20
+            clip: true
+            model: 100
+            cellWidth: 50
+            cellHeight: 32
+            delegate: parent.bRound ? numberDelegate1 : numberDelegate
+            visible: !parent.bList
+        }
+
         Component {
             id: numberDelegate
             Rectangle {
-                width: 60
+                width: 40
                 height: 20
                 color: "lightGreen"
                 Text {
@@ -195,6 +221,5 @@ Rectangle {
                 }
             }
         }
-
     }
 }
