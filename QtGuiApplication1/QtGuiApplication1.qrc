@@ -2,5 +2,7 @@
     <qresource prefix="/QtGuiApplication1">
         <file>Resources/ui.qml</file>
         <file>Resources/MyButton.qml</file>
+        <file>Resources/MyButton2.qml</file>
+        <file>Resources/MyListItem.qml</file>
     </qresource>
 </RCC>

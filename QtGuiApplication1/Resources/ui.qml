@@ -3,7 +3,7 @@ import QtQuick.Controls 2.3
 import QtGraphicalEffects 1.0
 Rectangle {
     id: root
-    width: 450
+    width: 700
     height: 320
     visible: true
     color: "#F2F8FF"
@@ -79,7 +79,7 @@ Rectangle {
         }
     }
 
-    MyButton
+    MyButton2
     {
         id: btn2
         anchors.left: edit1.right
@@ -92,7 +92,7 @@ Rectangle {
         }
     }
 
-    MyButton
+    MyButton2
     {
         id: btn3
         anchors.left: btn2.right
@@ -162,7 +162,7 @@ Rectangle {
 
     Rectangle {
         id: listExample
-        width: 300
+        width: 290
         height: 200
         color: "white"
         anchors.left: columExample.right
@@ -171,6 +171,7 @@ Rectangle {
 
         property bool bRound: false     //是否使用圆角矩形
         property bool bList: true       //是否使用列表视图
+        property int itemWidth: bList ? 150 : 40
 
         ListView {
             anchors.fill: parent
@@ -195,31 +196,41 @@ Rectangle {
 
         Component {
             id: numberDelegate
-            Rectangle {
-                width: 40
-                height: 20
+            MyListItem {
+                width: listExample.itemWidth
                 color: "lightGreen"
-                Text {
-                    anchors.centerIn: parent
-                    font.pixelSize: 10
-                    text: index
-                }
+                text: index
             }
         }
 
         Component {
             id: numberDelegate1
-            Rectangle {
-                width: 40
-                height: 24
+            MyListItem {
+                width: listExample.itemWidth
                 radius: 6
                 color: "#FDB4AD"
-                Text {
-                    anchors.centerIn: parent
-                    font.pixelSize: 10
-                    text: index
-                }
+                text: index
             }
+        }
+    }
+
+
+    Canvas {
+        width: 200; height: 200
+        anchors.left: listExample.right
+        anchors.top: root.top
+        anchors.margins: 10
+        onPaint: {
+            var ctx = getContext("2d")
+            // setup your path
+            // fill or/and stroke
+            ctx.strokeStyle = "red"
+            // create a path
+            ctx.beginPath()
+            ctx.moveTo(0,0)
+            ctx.lineTo(50,0)
+            // stroke path
+            ctx.stroke()
         }
     }
 }
