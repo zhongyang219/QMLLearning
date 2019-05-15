@@ -216,7 +216,8 @@ Rectangle {
 
 
     Canvas {
-        width: 200; height: 200
+        id: testCanvas
+        width: 200; height: 150
         anchors.left: listExample.right
         anchors.top: root.top
         anchors.margins: 10
@@ -231,6 +232,31 @@ Rectangle {
             ctx.lineTo(50,0)
             // stroke path
             ctx.stroke()
+        }
+    }
+
+    Component {
+        id: testItem
+        Rectangle {
+            width: 35
+            height: 20
+            color: "#FFC057"
+            property string name: ""
+            Text {
+                anchors.fill: parent
+                text: parent.name
+                verticalAlignment: Text.AlignVCenter
+            }
+
+        }
+    }
+
+    Loader {
+        sourceComponent: testItem
+        anchors.left: testCanvas.left
+        anchors.top: testCanvas.bottom
+        onLoaded: {
+            item.name = "23333"
         }
     }
 }
