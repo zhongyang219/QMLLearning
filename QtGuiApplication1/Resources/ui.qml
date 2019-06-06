@@ -3,10 +3,11 @@ import QtQuick.Controls 2.3
 import QtGraphicalEffects 1.0
 Rectangle {
     id: root
-    width: 700
+    width: 800
     height: 320
     visible: true
     color: "#F2F8FF"
+    //property var dataSource: null
 
     signal btn1Clicked()
     signal edit1TextChanged(var text)
@@ -217,7 +218,7 @@ Rectangle {
 
     Canvas {
         id: testCanvas
-        width: 200; height: 150
+        width: 100; height: 150
         anchors.left: listExample.right
         anchors.top: root.top
         anchors.margins: 10
@@ -235,28 +236,31 @@ Rectangle {
         }
     }
 
-    Component {
-        id: testItem
-        Rectangle {
-            width: 35
+    ListView {
+        width: 200
+        height: 300
+        anchors.top: testCanvas.top
+        anchors.left: testCanvas.right
+        clip: true
+        spacing: 5
+        model: dataSource.listData
+        delegate: Item {
             height: 20
-            color: "#FFC057"
-            property string name: ""
+            width: parent.width
+            Rectangle {
+                id: itemRect
+                anchors.fill: parent
+                color: "#a1f27c"
+            }
             Text {
                 anchors.fill: parent
-                text: parent.name
+                text: modelData.name + " " + modelData.value + " " + modelData.unit
+                font.family: qsTr("微软雅黑")
+                font.pixelSize: 11
+                color: Qt.darker(itemRect.color)
                 verticalAlignment: Text.AlignVCenter
             }
-
         }
     }
-
-    Loader {
-        sourceComponent: testItem
-        anchors.left: testCanvas.left
-        anchors.top: testCanvas.bottom
-        onLoaded: {
-            item.name = "23333"
-        }
-    }
+    
 }
