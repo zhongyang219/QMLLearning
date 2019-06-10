@@ -54,5 +54,8 @@
     <None Include="Resources\MyButton.qml">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\Global.qml">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

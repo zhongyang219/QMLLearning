@@ -123,6 +123,7 @@
     <QtRcc Include="QtGuiApplication1.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Global.qml" />
     <None Include="Resources\MyButton.qml" />
     <None Include="Resources\ui.qml" />
   </ItemGroup>

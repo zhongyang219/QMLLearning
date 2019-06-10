@@ -4,5 +4,6 @@
         <file>Resources/MyButton.qml</file>
         <file>Resources/MyButton2.qml</file>
         <file>Resources/MyListItem.qml</file>
+        <file>Resources/Global.qml</file>
     </qresource>
 </RCC>
