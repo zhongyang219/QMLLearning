@@ -31,7 +31,7 @@ Rectangle
         text: root.btnText
         anchors.centerIn: parent    //文本显示在按钮中间
         font.family: qsTr("微软雅黑")
-        font.pixelSize: global.dpi(11)
+        font.pixelSize: global.dpiFloat(11)
         color: "#012C6E"
     }
 }

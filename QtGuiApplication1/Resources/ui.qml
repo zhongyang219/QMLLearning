@@ -75,7 +75,7 @@ Rectangle {
         height: global.dpi(26)
         color: "#012C6E"
         font.family: qsTr("微软雅黑")
-        font.pixelSize: global.dpi(11)
+        font.pixelSize: global.dpiFloat(11)
         selectByMouse: true
         onTextChanged: {
             edit1TextChanged(text.trim())
@@ -120,7 +120,7 @@ Rectangle {
         anchors.topMargin: global.dpi(10)
         color: "#012C6E"
         font.family: qsTr("微软雅黑")
-        font.pixelSize: global.dpi(11)
+        font.pixelSize: global.dpiFloat(11)
 
         // custom counter property for space presses
         property int spacePresses: 0
