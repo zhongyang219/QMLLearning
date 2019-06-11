@@ -28,6 +28,11 @@ void QtGuiApplication1::onBtn1Clicked()
 
 }
 
+Q_INVOKABLE void QtGuiApplication1::onListItemClicked(int index)
+{
+    int a = 0;
+}
+
 void QtGuiApplication1::onEdit1TextChanged(QVariant strText)
 {
     QString str = strText.toString();

@@ -264,6 +264,16 @@ Rectangle {
                 color: Qt.darker(itemRect.color)
                 verticalAlignment: Text.AlignVCenter
             }
+            MouseArea
+            {
+                id: itemArea
+                anchors.fill: parent
+                hoverEnabled: true
+                enabled: true
+                onClicked: {
+                    dataSource.onListItemClicked(index);
+                }
+            }
         }
     }
     

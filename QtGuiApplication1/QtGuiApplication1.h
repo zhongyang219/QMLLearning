@@ -12,6 +12,7 @@ public:
 
 public:
     QtGuiApplication1(QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE void onListItemClicked(int index);
 
 signals:
     void listDataChanged();
